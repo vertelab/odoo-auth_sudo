@@ -4,13 +4,24 @@
 <openerp>
     <data>
 
-        <template id="auth_sudo.login" name="Sudo Login">
+        <template id="login" name="Sudo Login">
             <t t-call="web.login_layout">
                 <form class="oe_login_form" role="form" t-attf-action="/sudo_login{{ '?debug' if debug else '' }}" method="post" onsubmit="this.action = this.action + location.hash">
 
                     <div class="form-group field-login">
                         <label for="login" class="control-label">New User</label>
-                        <input type="text" name="login" t-att-value="login" id="login" class="form-control" required="required" autofocus="autofocus"/>
+                        
+                    <select name="login" >
+
+                 <t t-foreach="res_users" t-as="u">
+                    <option t-att-value="u.login"><t t-esc="u.name"/></option>
+<!--
+                    <option t-att-value="u.login" t-att-selected="u.id == user_id"><t t-esc="u.name"/></option>
+-->
+				</t>
+				 </select> 
+                        
+                        
                     </div>
 
                     <p class="alert alert-danger" t-if="error">
