@@ -21,7 +21,7 @@
 
 
 {
-    'name': 'Sudo impersonation',
+    'name': 'Smart Sudo impersonation',
     'version': '1.0',
     'category': 'Tools',
     'description': """
@@ -30,12 +30,9 @@ Allow users to login as another user.
 """,
     'author': 'Vertel AB',
     'website': 'https://vertel.se',
-    'depends': ['base', 'web'],
+    'depends': ['smart_common',],
     'data': [
         'templates.xml',
-    ],
-    'qweb': [
-        'static/src/xml/auth_sudo.xml'
     ],
     'installable': True,
     'auto_install': False,

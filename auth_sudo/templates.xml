@@ -39,6 +39,17 @@
                 </form>
             </t>
         </template>
+        
+        
+        <template id="assets_backend" inherit_id="web.assets_backend">
+                <xpath expr="//script[@src='/base/static/src/js/apps.js']" position="after">
+                    <script type="text/javascript" src="/auth_sudo/static/src/js/auth.js"></script>
+                </xpath>            
+        </template>
+        
+   
+        
+
 
     </data>
 </openerp>

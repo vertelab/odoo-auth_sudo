@@ -69,7 +69,7 @@ class Authentication(http.Controller):
         res_users = pool.get('res.users').browse(cr,uid,uid)
         values={}
         if request.httprequest.method == 'POST':
-            # Check if user can do sudo
+            # Check if user can do sudo 
             request.session.sudo_id = request.uid
             request.uid = pool.get('res.users').search(cr,uid,[('login','=',request.params['login'])])[0]
             request.session.uid = request.uid
@@ -80,7 +80,10 @@ class Authentication(http.Controller):
             return http.redirect_with_hash(redirect)
 #            request.uid = old_uid
             #values['error'] = "Wrong login/password"
-#        values['res_users'] = pool.get('res.users').search(cr,uid,['&',('id','<>',uid),('company_id','=',res_users.company_id.id)])   
+#        values['res_users'] = pool.get('res.users').search(cr,uid,['&',('id','<>',uid),('company_id','=',res_users.company_id.id)])
+        
+        
+        # Check if user can do Sudo
         values['res_users'] = pool.get('res.users').browse(cr,uid,pool.get('res.users').search(cr,uid,[]))   
         return request.render('auth_sudo.login', values)
 
